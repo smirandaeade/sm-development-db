@@ -362,6 +362,39 @@ export interface AdminTransferTokenPermission extends Schema.CollectionType {
   };
 }
 
+export interface ApiProyectoProyecto extends Schema.CollectionType {
+  collectionName: 'proyectos';
+  info: {
+    singularName: 'proyecto';
+    pluralName: 'proyectos';
+    displayName: 'proyectos';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    projectitle: Attribute.String & Attribute.Required;
+    projectdescription: Attribute.String;
+    projectimages: Attribute.Media;
+    url: Attribute.String & Attribute.Required;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::proyecto.proyecto',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::proyecto.proyecto',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface PluginUploadFile extends Schema.CollectionType {
   collectionName: 'files';
   info: {
@@ -793,6 +826,7 @@ declare module '@strapi/types' {
       'admin::api-token-permission': AdminApiTokenPermission;
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
+      'api::proyecto.proyecto': ApiProyectoProyecto;
       'plugin::upload.file': PluginUploadFile;
       'plugin::upload.folder': PluginUploadFolder;
       'plugin::content-releases.release': PluginContentReleasesRelease;

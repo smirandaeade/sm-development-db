@@ -1,0 +1,36 @@
+{
+  "kind": "collectionType",
+  "collectionName": "proyectos",
+  "info": {
+    "singularName": "proyecto",
+    "pluralName": "proyectos",
+    "displayName": "proyectos"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "projectitle": {
+      "type": "string",
+      "required": true
+    },
+    "projectdescription": {
+      "type": "string"
+    },
+    "projectimages": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": true
+    },
+    "url": {
+      "type": "string",
+      "required": true
+    }
+  }
+}
